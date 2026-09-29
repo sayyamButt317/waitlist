@@ -1,13 +1,12 @@
 import dotenv from "dotenv";
 import chalk from "chalk";
-import app from "./app.js";
+import app from "./server.js";
 import connectionDB from "./db/connection.js";
 
 dotenv.config({
   path: "./.env",
 });
 
-// Local only — Vercel uses the Express export from app.js
 if (!process.env.VERCEL) {
   connectionDB()
     .then(() => {
