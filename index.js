@@ -1,17 +1,22 @@
 import dotenv from "dotenv";
-import { app } from "./App.js";
-import connectionDB  from "./db/connection.js";
-import chalk from 'chalk';
+import chalk from "chalk";
+import app from "./app.js";
+import connectionDB from "./db/connection.js";
 
 dotenv.config({
   path: "./.env",
 });
 
-// Connect to MongoDB
-connectionDB()
-  .then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-      console.log(chalk.bgBlue(`Server running on http://localhosts:${process.env.PORT || 8000}`));
-    });
-  })
-  .catch((err) => console.log(`MongoDB connection failed`, err));
+// Local only — Vercel uses the Express export from app.js
+if (!process.env.VERCEL) {
+  connectionDB()
+    .then(() => {
+      const port = process.env.PORT || 8000;
+      app.listen(port, () => {
+        console.log(chalk.bgBlue(`Server running on http://localhost:${port}`));
+      });
+    })
+    .catch((err) => console.log(`MongoDB connection failed`, err));
+}
+
+export default app;

@@ -30,10 +30,11 @@ app.use(
   })
 );
 app.use(cookieParser());
+
 app.get("/", (_req, res) => {
   res.json({ ok: true, message: "Waitlist API is running" });
 });
+
 app.use("/api", Routes);
 app.use(errorHandler);
-
-export { app };
+export default app;
