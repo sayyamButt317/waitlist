@@ -16,11 +16,10 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
+// Routes Declaration
+app.use("/api", Routes);
+
 // Error Handler
 app.use(errorHandler);
-
-// Routes Declaration
-app.use("/api",Routes);
-
 
 export { app };

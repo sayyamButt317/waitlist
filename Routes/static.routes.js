@@ -5,7 +5,7 @@ const router = Router();
 router.get(`/test`,(req,res)=>{
     res.send("Hello World");
 })
-router.post(`waitlist`,waitlistController)
+router.post(`/waitlist`, waitlistController)
 
 
 export default router;
