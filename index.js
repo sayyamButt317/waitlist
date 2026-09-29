@@ -3,7 +3,6 @@ import { app } from "./App.js";
 import connectionDB  from "./db/connection.js";
 import chalk from 'chalk';
 
-// Environment variable configuration
 dotenv.config({
   path: "./.env",
 });
