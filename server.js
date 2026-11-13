@@ -21,7 +21,9 @@ app.use(async (_req, _res, next) => {
   }
 });
 
+app.set("trust proxy", true); // behind Vercel's proxy: makes req.protocol "https"
 app.use(morgan("dev"));
+app.use("/api/wishes", express.json({ limit: "5mb" }));
 app.use(express.json({ limit: "16kb" }));
 app.use(cors());
 app.use(cookieParser());
